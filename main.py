@@ -200,22 +200,26 @@ plt.show()
 plt.figure(figsize=(8, 6))
 sns.boxplot(x=data["species"], y=data["sepal_length"], width=0.3, showfliers=True, boxprops=dict(alpha=0.6))
 plt.ylabel("Długość (cm)", fontweight="bold")
+plt.xlabel("Gatunek", fontweight="bold")
 plt.show()
 
 # Wykres pudełkowy dla sepal_width
 plt.figure(figsize=(8, 6))
 sns.boxplot(x=data["species"], y=data["sepal_width"], width=0.3, showfliers=True, boxprops=dict(alpha=0.6))
 plt.ylabel("Szerokość (cm)", fontweight="bold")
+plt.xlabel("Gatunek", fontweight="bold")
 plt.show()
 
 # Wykres pudełkowy dla petal_length
 plt.figure(figsize=(8, 6))
 sns.boxplot(x=data["species"], y=data["petal_length"], width=0.3, showfliers=True, boxprops=dict(alpha=0.6))
 plt.ylabel("Długość (cm)", fontweight="bold")
+plt.xlabel("Gatunek", fontweight="bold")
 plt.show()
 
 # Wykres pudełkowy dla petal_width
 plt.figure(figsize=(8, 6))
 sns.boxplot(x=data["species"], y=data["petal_width"], width=0.3, showfliers=True, boxprops=dict(alpha=0.6))
 plt.ylabel("Szerokość (cm)", fontweight="bold")
+plt.xlabel("Gatunek", fontweight="bold")
 plt.show()
