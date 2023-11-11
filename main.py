@@ -55,8 +55,8 @@ numeric_data = data.drop(columns=['species'])
 # Obliczanie miar rozkładu dla każdej cechy za pomocą funkcji describe
 distribution_measures = numeric_data.describe()
 
-print("\nDistribution measures, deafult")
-print(distribution_measures)
+# print("\nDistribution measures, deafult")
+# print(distribution_measures)
 
 # Obliczanie miar położenia rozkładu, podstawowe python funkcje
 minimum = numeric_data.min()
@@ -69,16 +69,16 @@ upper_quartile = numeric_data.quantile(0.75)
 # Oblicz miarę zróżnicowania rozkładu (odchylenie standardowe)
 std_deviation = numeric_data.std()
 
-# Wyświetlanie wyników wyniki
-print("\nMiary położenia rozkładu:\n")
-print(f"Minimum:\n{minimum}\n")
-print(f"Maksimum:\n{maximum}\n")
-print(f"Średnia arytmetyczna:\n{mean}\n")
-print(f"Mediana:\n{median}\n")
-print(f"Dolny kwartyl (Q1):\n{lower_quartile}\n")
-print(f"Górny kwartyl (Q3):\n{upper_quartile}\n")
-print("Miarę zróżnicowania rozkładu (odchylenie standardowe):")
-print(std_deviation)
+# Wyświetlanie wyników
+# print("\nMiary położenia rozkładu:\n")
+# print(f"Minimum:\n{minimum}\n")
+# print(f"Maksimum:\n{maximum}\n")
+# print(f"Średnia arytmetyczna:\n{mean}\n")
+# print(f"Mediana:\n{median}\n")
+# print(f"Dolny kwartyl (Q1):\n{lower_quartile}\n")
+# print(f"Górny kwartyl (Q3):\n{upper_quartile}\n")
+# print("Miarę zróżnicowania rozkładu (odchylenie standardowe):")
+# print(std_deviation)
 
 
 # Miary rozkładu, własna implementacja:
@@ -161,15 +161,16 @@ for num, header in enumerate(header_list[:-1], 1):
     print(f"Custom Maximum : {maximum}")
     print(f"Custom Mean : {mean}")
     print(f"Custom Median : {median}")
-    print(f"Custom Upper Quartile : {upper_quartile}")
     print(f"Custom Lower Quartile : {lower_quartile}")
+    print(f"Custom Upper Quartile : {upper_quartile}")
     print(f"Custom Standard Deviation: {std_deviation}")
 
 
 
 # # # WYKRESY # # #
+
 # Single histogram for sepal_length without facet
-sns.histplot(data=data, x="sepal_length", kde=False, color="skyblue", label="sepal_length")
+sns.histplot(data=data, x="sepal_length",  kde=False,  color="skyblue",  label="sepal_length")
 plt.title("Długość działki kielicha", fontweight="bold")
 plt.ylabel("Liczebność", fontweight="bold")  # Zmiana etykiety na osi y
 plt.xlabel("Długość (cm)", fontweight="bold")  # Zmiana etykiety na osi x
@@ -222,4 +223,38 @@ plt.figure(figsize=(8, 6))
 sns.boxplot(x=data["species"], y=data["petal_width"], width=0.3, showfliers=True, boxprops=dict(alpha=0.6))
 plt.ylabel("Szerokość (cm)", fontweight="bold")
 plt.xlabel("Gatunek", fontweight="bold")
+plt.show()
+
+# Histogramy dla każdej cechy (łącznie dla wszystkich gatunków)
+
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data=data, x="sepal_length", hue="species", kde=False, bins=20)
+plt.title("Histogramy dla Długości Działki Kielicha według Gatunku")
+plt.xlabel("Długość (cm)")
+plt.ylabel("Liczebność")
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data=data, x="sepal_width", hue="species", kde=False, bins=20)
+plt.title("Histogramy dla Szerokości Działki Kielicha według Gatunku")
+plt.xlabel("Szerokość (cm)")
+plt.ylabel("Liczebność")
+
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data=data, x="petal_length", hue="species", kde=False, bins=20)
+plt.title("Histogramy dla Długości Płatka według Gatunku")
+plt.xlabel("Długość (cm)")
+plt.ylabel("Liczebność")
+
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data=data, x="petal_width", hue="species", kde=False, bins=20)
+plt.title("Histogramy dla Szerokości Płatka według Gatunku")
+plt.xlabel("Szerokość (cm)")
+plt.ylabel("Liczebność")
+
 plt.show()
